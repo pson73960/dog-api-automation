@@ -1,7 +1,9 @@
-🐾 Dog API - Enterprise Automation Framework
+# Playwright TypeScript Automation DogAPI
+
+## 🐾 Dog API - Enterprise Automation Framework
 This is an Enterprise-grade Automation Framework built with Playwright and TypeScript, designed for high scalability, maintainability, and stability. It covers both API Lifecycle management and UI Verification for an end-to-end testing experience.
 
-🚀 Key Features
+## 🚀 Key Features
 Page Object Model (POM): Enhanced maintainability by separating API clients/UI elements from test logic.
 
 API Client Pattern: Robust handling of API requests, status codes, and JSON schemas for The Dog API.
@@ -16,7 +18,7 @@ CI/CD Integrated: Fully automated testing pipeline using GitHub Actions with man
 
 Advanced Debugging: Automatic Trace Viewer, Video, and Screenshot collection on test failures.
 
-📁 Project Structure
+## 📁 Project Structure
 .github/workflows/: CI/CD pipeline definitions (GitHub Actions).
 
 data/: Test data management (Images and JSON test data).
@@ -33,7 +35,7 @@ utils/: Helper functions for file handling and string manipulation.
 
 TestStrategy.md: Strategic document explaining the testing methodology.
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 Language: TypeScript
 
 Tool: Playwright Test
@@ -42,7 +44,7 @@ CI/CD: GitHub Actions
 
 Reporting: HTML Report, JSON Report & Trace Viewer
 
-🚦 How to Run
+## 🚦 How to Run
 1. Local Setup
 Clone the repository:
 
@@ -64,7 +66,7 @@ ENV=staging npx playwright test
 View HTML Report:
 Bash
 npx playwright show-report
-📊 CI/CD & Reporting
+## 📊 CI/CD & Reporting
 Each test run on GitHub Actions generates a detailed HTML Report.
 
 Automatic Triggers: Runs on every push to main and daily at 8:00 AM (VN Time).
