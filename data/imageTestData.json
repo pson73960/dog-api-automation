@@ -1,0 +1,12 @@
+[
+  {
+    "fileName": "dog.jpg",
+    "mimeType": "image/jpeg",
+    "description": "JPEG format"
+  },
+  {
+    "fileName": "dog_icon.png",
+    "mimeType": "image/png",
+    "description": "PNG format"
+  }
+]
