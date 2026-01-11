@@ -1,27 +1,46 @@
-name: Playwright Tests
+name: Dog API Automation CI
+
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select Environment to run tests'
+        required: true
+        default: 'qa'
+        type: choice
+        options:
+          - qa
+          - staging
+
 jobs:
   test:
-    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: lts/*
+        node-version: 20
+        cache: 'npm'
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
     - name: Run Playwright tests
       run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+      env:
+        ENV: ${{ github.event.inputs.environment || 'qa' }}
+        DOG_API_KEY: ${{ secrets.DOG_API_KEY }}
+        CI: true
+
+    - name: Upload Report
+      if: always()
+      uses: actions/upload-artifact@v4
       with:
-        name: playwright-report
+        name: playwright-report-${{ github.event.inputs.environment || 'qa' }}
         path: playwright-report/
-        retention-days: 30
+        retention-days: 7
